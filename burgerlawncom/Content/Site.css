@@ -1,0 +1,80 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    min-height:80vh;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+.forminput{
+    width:65%;
+    height:50%;
+    margin:0 auto;
+}
+
+.fab{
+    width:60px;
+    height:60px;
+    border-radius:30px;
+    background-color:#ff0000;
+    position:absolute;
+    right:50px;
+    bottom:50px;
+}
+
+.fab-crossbar {
+    width: 5px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: #000000;
+    position:relative;
+    top:5px;
+    left:27.5px;
+}
+
+.fab-pillar {
+    width: 50px;
+    height: 5px;
+    border-radius: 25px;
+    background-color: #000000;
+    position: relative;
+    top: -22.5px;
+    left: 5px;
+}
+
+.abuttonmod{
+    margin:5px;
+    color:#000000;
+    background-color:#808080;
+    border-radius:5px;
+}
+
+
+.addclientservice{
+    /*float:right;*/
+    margin-top:5px;
+}
+
+.signin{
+    width: 65%;
+    margin:0 auto;
+}

@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "ClientManager";
+}
+
+<h2>ClientManager</h2>
+<table>
+    <tbody>
+        <tr>
+            <td>
+                <label for="name">Name</label>
+            </td>
+            <td>
+                <input id="name" placeholder="Client One" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="address">Address</label>
+            </td>
+            <td>
+                <input id="address" placeholder="123 ABC Ave." />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="expectedpaydate">Expected Pay Date</label>
+            </td>
+            <td>
+                <input id="expectedpaydate" placeholder="June 1, 2023" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <button>Add</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="addclientservice">
+    <label for="addservicedate">Service Date</label>
+    <input id="addservicedate" placeholder="May 2, 2023" />
+    <select>
+        <option>Service 1</option>
+        <option>Service 2</option>
+        <option>Service 3</option>
+        <option>Service 4</option>
+    </select>
+    <button>Add</button>
+    <div>
+        <h4>Client Services</h4>
+        <p>Service 1:May 2 2023</p>
+        <p>Service 2:May 2 2023</p>
+        <p>Service 3:May 3 2023</p>
+        <p>Service 4:May 4 2023</p>
+    </div>
+</div>
+<button>Cancel</button>
+<button>Confirm</button>
