@@ -68,5 +68,11 @@ namespace burgerlawncom.Controllers
             ViewBag.Message = "Sign Up";
             return View();
         }
+
+        public ActionResult ClientView()
+        {
+            ViewBag.Message = "Client View";
+            return View();
+        }
     }
 }
