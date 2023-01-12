@@ -10,12 +10,63 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <script>
+        let clock,
+        interval,
+        offset;
+        let options = {};
+        options.delay = 10;
+
+        function start() {
+            console.log("start pressed");
+            if (!interval) {
+                offset = Date.now();
+                interval = setInterval(update, options.delay);
+            }
+        }
+        function stop() {
+            console.log("stop pressed");
+            if (interval) {
+                clearInterval(interval);
+                interval = null;
+            }
+        }
+        function reset() {
+            console.log("reset pressed");
+            clock = 0;
+            render(0);
+        }
+        function update() {
+            clock += delta();
+            render();
+        }
+        function render() {
+            let seconds = Math.floor(clock / 1000) % 60;
+            if (seconds < 10)
+                seconds = "0" + seconds;
+            let minutes = Math.floor(Math.floor(clock / 1000) / 60) % 60;
+            if (minutes < 10)
+                minutes = "0" + minutes;
+            let hours = Math.floor(Math.floor(Math.floor(clock / 1000) / 60) / 60) % 60;
+            if (hours < 10)
+                hours = "0" + hours;
+            document.getElementById("timer").innerText = hours + ":" + minutes + ":" + seconds;
+        }
+
+        function delta() {
+            var now = Date.now(),
+                d = now - offset;
+
+            offset = now;
+            return d;
+        }
+    </script>
 </head>
 <body>
-    @using (Html.BeginForm()) 
+    @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        
+
         <div class="form-horizontal">
             <h4>timekeeping</h4>
             <hr />
@@ -27,7 +78,7 @@
                     @Html.ValidationMessageFor(model => model.client_service_id, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.time_taken, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -35,7 +86,7 @@
                     @Html.ValidationMessageFor(model => model.time_taken, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.creation_date, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -43,35 +94,35 @@
                     @Html.ValidationMessageFor(model => model.creation_date, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
-            <div class="timekeeping-button-form-group">
-                <table>
-                    <thead></thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <input type="submit" value="Start" class="timekeeping-button-left" />
-                            </td>
-                            <td>
-                                <input type="submit" value="Stop" class="timekeeping-button-right" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="submit" value="Reset" class="timekeeping-button-left" />
 
-                            </td>
-                            <td>
-                                <input type="submit" value="Done" class="timekeeping-button-right" />
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tfoot></tfoot>
-                </table>
+            <div class="timekeeping-button-form-group">
             </div>
         </div>
     }
-    
+
+    <table>
+        <thead><tr><th></th><th class="timer" id="timer">00:00</th></tr></thead>
+        <tbody>
+            <tr>
+                <td>
+                    <button class="timekeeping-button-left" onclick="start()">Start</button>
+                </td>
+                <td>
+                    <button class="timekeeping-button-right" onclick="stop()">Stop</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="timekeeping-button-left" onclick="reset()">Reset</button>
+                </td>
+                <td>
+                    <button class="timekeeping-button-right" onclick="">Done</button>
+                    <input type="submit" value="Done" class="timekeeping-button-right" />
+                </td>
+            </tr>
+        </tbody>
+        <tfoot></tfoot>
+    </table>
     <div>
         @Html.ActionLink("Back to List", "Index")
     </div>
